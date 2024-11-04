@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/cat-exprenses-tracker/static/css/main.cba8dfea.css",
+    "main.js": "/cat-exprenses-tracker/static/js/main.d8a943d3.js",
+    "static/media/bg1.jpg": "/cat-exprenses-tracker/static/media/bg1.546c8159e2668c2953e0.jpg",
+    "index.html": "/cat-exprenses-tracker/index.html",
+    "main.cba8dfea.css.map": "/cat-exprenses-tracker/static/css/main.cba8dfea.css.map",
+    "main.d8a943d3.js.map": "/cat-exprenses-tracker/static/js/main.d8a943d3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cba8dfea.css",
+    "static/js/main.d8a943d3.js"
+  ]
+}
