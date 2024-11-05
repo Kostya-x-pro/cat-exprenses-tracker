@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/cat-exprenses-tracker/static/css/main.ae461e6f.css",
-    "main.js": "/cat-exprenses-tracker/static/js/main.e027b791.js",
+    "main.js": "/cat-exprenses-tracker/static/js/main.16f54fb7.js",
     "static/media/Игрушки.png": "/cat-exprenses-tracker/static/media/Игрушки.b149af47a5b49f73ed6d.png",
     "static/media/bg1.jpg": "/cat-exprenses-tracker/static/media/bg1.546c8159e2668c2953e0.jpg",
     "static/media/Наполнитель.png": "/cat-exprenses-tracker/static/media/Наполнитель.3d9bb385629714b86761.png",
@@ -12,10 +12,10 @@
     "static/media/Лакомства.png": "/cat-exprenses-tracker/static/media/Лакомства.5451e36cecf86fff0247.png",
     "index.html": "/cat-exprenses-tracker/index.html",
     "main.ae461e6f.css.map": "/cat-exprenses-tracker/static/css/main.ae461e6f.css.map",
-    "main.e027b791.js.map": "/cat-exprenses-tracker/static/js/main.e027b791.js.map"
+    "main.16f54fb7.js.map": "/cat-exprenses-tracker/static/js/main.16f54fb7.js.map"
   },
   "entrypoints": [
     "static/css/main.ae461e6f.css",
-    "static/js/main.e027b791.js"
+    "static/js/main.16f54fb7.js"
   ]
 }
