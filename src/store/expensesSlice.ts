@@ -1,9 +1,10 @@
+import { AppDispatch } from ".";
 import { createSlice, PayloadAction, createAsyncThunk  } from "@reduxjs/toolkit";
 import { db } from '../firebase';
-import { collection, addDoc, getDocs, deleteDoc, doc } from "firebase/firestore";
+import { collection, addDoc, deleteDoc, doc, onSnapshot } from "firebase/firestore";
 
 interface Expense {
-  id: number;
+  id: string;
   category: string;
   amount: number;
   date: string;
@@ -18,11 +19,16 @@ const initialState: ExpensesState = {
   expenses: [],
 }
 
-export const fetchExpenses = createAsyncThunk("expenses/fetchExpenses", async () => {
-  const snapshot = await getDocs(collection(db, "expenses"));
-  const expenses = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as unknown as Expense));
-  console.log("Fetched expenses from Firebase:", expenses);
-  return expenses;
+export const subscribeToExpenses = (dispatch: AppDispatch) => {
+  return onSnapshot(collection(db, "expenses"), (snapshot) => {
+    const expenses = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as unknown as Expense));
+    dispatch(setExpenses(expenses));
+  });
+};
+
+export const setExpenses = (expenses: Expense[]) => ({
+  type: 'expenses/setExpenses',
+  payload: expenses
 });
 
 export const addExpenseToFirestore = createAsyncThunk(
@@ -45,18 +51,17 @@ const expensesSlice = createSlice({
   name: 'expenses',
   initialState,
   reducers: {
-      addExpense: (state, action: PayloadAction<Expense>) => {
-          state.expenses.push(action.payload);
-      },
-      removeExpense: (state, action: PayloadAction<number>) => {
-        state.expenses = state.expenses.filter(expense => expense.id !== action.payload)
-      }
+    setExpenses: (state, action: PayloadAction<Expense[]>) => {
+      state.expenses = action.payload;
+    },
+    addExpense: (state, action: PayloadAction<Expense>) => {
+      state.expenses.push(action.payload);
+    },
+    removeExpense: (state, action: PayloadAction<string>) => {
+      state.expenses = state.expenses.filter(expense => expense.id !== action.payload);
+    }
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchExpenses.fulfilled, (state, action) => {
-      console.log("fetchExpenses.fulfilled action payload:", action.payload);
-      state.expenses = action.payload;
-    });
   }
 });
 export const {addExpense, removeExpense } = expensesSlice.actions;

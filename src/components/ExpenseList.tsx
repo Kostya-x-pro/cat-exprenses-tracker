@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { ListGroup, Card } from 'react-bootstrap';
 import { RootState, AppDispatch } from "../store";
-import { fetchExpenses, removeExpenseFromFirestore } from "../store/expensesSlice";
+import { subscribeToExpenses, removeExpenseFromFirestore } from "../store/expensesSlice";
 import deleteIcon from '../assets/icons/delete.png';
 
 const ExpenseList: React.FC = () => {
@@ -11,8 +11,8 @@ const ExpenseList: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
 
     useEffect(() => {
-        console.log("Dispatching fetchExpenses");
-        dispatch(fetchExpenses());
+        const unsubscribe = subscribeToExpenses(dispatch);
+        return () => unsubscribe();
     }, [dispatch]);
 
     const handleDelete = (id: string) => {
