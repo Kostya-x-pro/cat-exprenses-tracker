@@ -1,11 +1,11 @@
 import React from "react";
 import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
-import { addExpense } from "../store/expensesSlice";
+import { AppDispatch } from "../store";
 import { Form, Button } from 'react-bootstrap';
 import * as Yup from 'yup';
+import { addExpenseToFirestore } from "../store/expensesSlice";
 
-// Определяем схему валидации с использованием Yup
 const validationSchema = Yup.object({
     category: Yup.string().required("Выберите категорию"),
     amount: Yup.number()
@@ -17,7 +17,7 @@ const validationSchema = Yup.object({
 });
 
 const ExpenseForm: React.FC = () => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
 
     const formik = useFormik({
         initialValues: {
@@ -26,10 +26,9 @@ const ExpenseForm: React.FC = () => {
             date: '',
             currency: 'BYN'
         },
-        validationSchema, // Применяем схему валидации Yup
+        validationSchema, 
         onSubmit: (values) => {
-            dispatch(addExpense({ 
-                id: Date.now(), 
+            dispatch(addExpenseToFirestore({ 
                 amount: +values.amount, 
                 category: values.category, 
                 date: values.date, 

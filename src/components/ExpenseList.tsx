@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { ListGroup, Card } from 'react-bootstrap';
-import { RootState } from "../store";
-import { removeExpense } from "../store/expensesSlice";
+import { RootState, AppDispatch } from "../store";
+import { fetchExpenses, removeExpenseFromFirestore } from "../store/expensesSlice";
 import deleteIcon from '../assets/icons/delete.png';
 
 const ExpenseList: React.FC = () => {
     const expenses = useSelector((state: RootState) => state.expenses.expenses);
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
+
+    useEffect(() => {
+        dispatch(fetchExpenses());
+    }, [dispatch]);
+
+    const handleDelete = (id: string) => {
+        dispatch(removeExpenseFromFirestore(id));
+    };
     
     const totalSum = expenses.reduce((acc, expense) => acc + expense.amount, 0);
 
@@ -45,7 +53,7 @@ const ExpenseList: React.FC = () => {
                                     src={deleteIcon} 
                                     alt="Delete" 
                                     className="delete-icon" 
-                                    onClick={() => dispatch(removeExpense(expense.id))}
+                                    onClick={() => handleDelete(expense.id.toString())}
                                 />
                             </Card>
                         </ListGroup.Item>
