@@ -3,6 +3,18 @@ import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import { addExpense } from "../store/expensesSlice";
 import { Form, Button } from 'react-bootstrap';
+import * as Yup from 'yup';
+
+// Определяем схему валидации с использованием Yup
+const validationSchema = Yup.object({
+    category: Yup.string().required("Выберите категорию"),
+    amount: Yup.number()
+        .required("Введите сумму")
+        .positive("Сумма должна быть положительным числом")
+        .typeError("Сумма должна быть числом"),
+    date: Yup.date().required("Выберите дату"),
+    currency: Yup.string().required("Выберите валюту")
+});
 
 const ExpenseForm: React.FC = () => {
     const dispatch = useDispatch();
@@ -14,6 +26,7 @@ const ExpenseForm: React.FC = () => {
             date: '',
             currency: 'BYN'
         },
+        validationSchema, // Применяем схему валидации Yup
         onSubmit: (values) => {
             dispatch(addExpense({ 
                 id: Date.now(), 
@@ -35,6 +48,7 @@ const ExpenseForm: React.FC = () => {
                     name="category"
                     onChange={formik.handleChange}
                     value={formik.values.category}
+                    isInvalid={!!formik.errors.category && formik.touched.category}
                 >
                     <option value="">Выберите категорию</option>
                     <option value="Сухой корм">Сухой корм</option>
@@ -45,6 +59,7 @@ const ExpenseForm: React.FC = () => {
                     <option value="Лекарства">Лекарства</option>
                     <option value="Прочее">Прочее</option>
                 </Form.Control>
+                <Form.Control.Feedback type="invalid">{formik.errors.category}</Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group controlId="amount" className="mt-3">
@@ -55,7 +70,9 @@ const ExpenseForm: React.FC = () => {
                     onChange={formik.handleChange}
                     value={formik.values.amount}
                     placeholder="Введите сумму"
+                    isInvalid={!!formik.errors.amount && formik.touched.amount}
                 />
+                <Form.Control.Feedback type="invalid">{formik.errors.amount}</Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group controlId="currency" className="mt-3">
@@ -65,12 +82,14 @@ const ExpenseForm: React.FC = () => {
                     name="currency"
                     onChange={formik.handleChange}
                     value={formik.values.currency}
+                    isInvalid={!!formik.errors.currency && formik.touched.currency}
                 >
                     <option value="BYN">BYN (Бел. руб.)</option>
                     <option value="USD">USD (Доллары)</option>
                     <option value="EUR">EUR (Евро)</option>
                     <option value="RUB">RUB (Рос. руб.)</option>
                 </Form.Control>
+                <Form.Control.Feedback type="invalid">{formik.errors.currency}</Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group controlId="date" className="mt-3">
@@ -80,7 +99,9 @@ const ExpenseForm: React.FC = () => {
                     name="date"
                     onChange={formik.handleChange}
                     value={formik.values.date}
+                    isInvalid={!!formik.errors.date && formik.touched.date}
                 />
+                <Form.Control.Feedback type="invalid">{formik.errors.date}</Form.Control.Feedback>
             </Form.Group>
 
             <Button type="submit" variant="primary" className="mt-4 w-100">
