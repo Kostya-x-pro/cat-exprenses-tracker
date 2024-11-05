@@ -11,6 +11,7 @@ const ExpenseList: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
 
     useEffect(() => {
+        console.log("Dispatching fetchExpenses");
         dispatch(fetchExpenses());
     }, [dispatch]);
 
