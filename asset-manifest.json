@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.106aeefa.css",
-    "main.js": "/static/js/main.7c715850.js",
-    "static/media/Игрушки.png": "/static/media/Игрушки.b149af47a5b49f73ed6d.png",
-    "static/media/bg1.jpg": "/static/media/bg1.546c8159e2668c2953e0.jpg",
-    "static/media/Наполнитель.png": "/static/media/Наполнитель.3d9bb385629714b86761.png",
-    "static/media/Сухой корм.png": "/static/media/Сухой корм.a2fc65e73e012666232d.png",
-    "static/media/Прочее.png": "/static/media/Прочее.58aac29599f7da495afd.png",
-    "static/media/Влажный корм.png": "/static/media/Влажный корм.8b10a9a94c6226d3d770.png",
-    "static/media/Лекарства.png": "/static/media/Лекарства.e9cf8f16c5867a7d62c3.png",
-    "static/media/Лакомства.png": "/static/media/Лакомства.5451e36cecf86fff0247.png",
-    "index.html": "/index.html",
-    "main.106aeefa.css.map": "/static/css/main.106aeefa.css.map",
-    "main.7c715850.js.map": "/static/js/main.7c715850.js.map"
+    "main.css": "/cat-exprenses-tracker/static/css/main.ae461e6f.css",
+    "main.js": "/cat-exprenses-tracker/static/js/main.83dcf5b3.js",
+    "static/media/Игрушки.png": "/cat-exprenses-tracker/static/media/Игрушки.b149af47a5b49f73ed6d.png",
+    "static/media/bg1.jpg": "/cat-exprenses-tracker/static/media/bg1.546c8159e2668c2953e0.jpg",
+    "static/media/Наполнитель.png": "/cat-exprenses-tracker/static/media/Наполнитель.3d9bb385629714b86761.png",
+    "static/media/Сухой корм.png": "/cat-exprenses-tracker/static/media/Сухой корм.a2fc65e73e012666232d.png",
+    "static/media/Прочее.png": "/cat-exprenses-tracker/static/media/Прочее.58aac29599f7da495afd.png",
+    "static/media/Влажный корм.png": "/cat-exprenses-tracker/static/media/Влажный корм.8b10a9a94c6226d3d770.png",
+    "static/media/Лекарства.png": "/cat-exprenses-tracker/static/media/Лекарства.e9cf8f16c5867a7d62c3.png",
+    "static/media/Лакомства.png": "/cat-exprenses-tracker/static/media/Лакомства.5451e36cecf86fff0247.png",
+    "index.html": "/cat-exprenses-tracker/index.html",
+    "main.ae461e6f.css.map": "/cat-exprenses-tracker/static/css/main.ae461e6f.css.map",
+    "main.83dcf5b3.js.map": "/cat-exprenses-tracker/static/js/main.83dcf5b3.js.map"
   },
   "entrypoints": [
-    "static/css/main.106aeefa.css",
-    "static/js/main.7c715850.js"
+    "static/css/main.ae461e6f.css",
+    "static/js/main.83dcf5b3.js"
   ]
 }
