@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, createAsyncThunk  } from "@reduxjs/toolkit";
-import { db } from '../../firebase';
+import { db } from '../firebase';
 import { collection, addDoc, getDocs, deleteDoc, doc } from "firebase/firestore";
 
 interface Expense {
