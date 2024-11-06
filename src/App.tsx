@@ -7,7 +7,7 @@ import './App.css'
 const App: React.FC = () => {
   return (
     <Container className="mt-5">
-      <h1 className="text-center">Рассходы на кошек</h1>
+      <h1 className="text-center">Затраты на питомцев</h1>
       <Row className="justify-content-center mt-4">
         <Col xs={12} md={6}>
           <ExpenseForm />

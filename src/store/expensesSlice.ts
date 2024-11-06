@@ -8,7 +8,8 @@ interface Expense {
   category: string;
   amount: number;
   date: string;
-  currency: string;
+  quantity: number;
+  month: number; 
 }
 
 interface ExpensesState {
@@ -33,7 +34,7 @@ export const setExpenses = (expenses: Expense[]) => ({
 
 export const addExpenseToFirestore = createAsyncThunk(
   "expenses/addExpenseToFirestore",
-  async (expense: Omit<Expense, "id">) => {
+  async (expense: Omit<Expense, "id" | "currency">) => {
       const docRef = await addDoc(collection(db, "expenses"), expense);
       return { id: docRef.id, ...expense };
   }

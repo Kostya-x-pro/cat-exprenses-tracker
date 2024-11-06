@@ -13,7 +13,11 @@ const validationSchema = Yup.object({
         .positive("Сумма должна быть положительным числом")
         .typeError("Сумма должна быть числом"),
     date: Yup.date().required("Выберите дату"),
-    currency: Yup.string().required("Выберите валюту")
+    quantity: Yup.number()
+        .required("Введите количество")
+        .positive("Количество должно быть положительным числом")
+        .integer("Количество должно быть целым числом")
+        .typeError("Количество должно быть числом"),
 });
 
 const ExpenseForm: React.FC = () => {
@@ -23,16 +27,20 @@ const ExpenseForm: React.FC = () => {
         initialValues: {
             category: '',
             amount: '',
-            date: '',
-            currency: 'BYN'
+            date: new Date().toISOString().split("T")[0],
+            quantity: 1,
         },
         validationSchema, 
         onSubmit: (values) => {
+            const date = new Date(values.date);
+            const month = date.getMonth() + 1;
+
             dispatch(addExpenseToFirestore({ 
-                amount: +values.amount, 
+                amount: +values.amount * +values.quantity,
                 category: values.category, 
-                date: values.date, 
-                currency: values.currency
+                date: values.date,
+                quantity: +values.quantity,
+                month,
             }));
             formik.resetForm();
         }
@@ -61,7 +69,7 @@ const ExpenseForm: React.FC = () => {
                 <Form.Control.Feedback type="invalid">{formik.errors.category}</Form.Control.Feedback>
             </Form.Group>
 
-            <Form.Group controlId="amount" className="mt-3">
+            <Form.Group controlId="amount">
                 <Form.Label>Сумма</Form.Label>
                 <Form.Control
                     type="number"
@@ -74,24 +82,20 @@ const ExpenseForm: React.FC = () => {
                 <Form.Control.Feedback type="invalid">{formik.errors.amount}</Form.Control.Feedback>
             </Form.Group>
 
-            <Form.Group controlId="currency" className="mt-3">
-                <Form.Label>Валюта</Form.Label>
+            <Form.Group controlId="quantity">
+                <Form.Label>Количество</Form.Label>
                 <Form.Control
-                    as="select"
-                    name="currency"
+                    type="number"
+                    name="quantity"
                     onChange={formik.handleChange}
-                    value={formik.values.currency}
-                    isInvalid={!!formik.errors.currency && formik.touched.currency}
-                >
-                    <option value="BYN">BYN (Бел. руб.)</option>
-                    <option value="USD">USD (Доллары)</option>
-                    <option value="EUR">EUR (Евро)</option>
-                    <option value="RUB">RUB (Рос. руб.)</option>
-                </Form.Control>
-                <Form.Control.Feedback type="invalid">{formik.errors.currency}</Form.Control.Feedback>
+                    value={formik.values.quantity}
+                    placeholder="Введите количество"
+                    isInvalid={!!formik.errors.quantity && formik.touched.quantity}
+                />
+                <Form.Control.Feedback type="invalid">{formik.errors.quantity}</Form.Control.Feedback>
             </Form.Group>
 
-            <Form.Group controlId="date" className="mt-3">
+            <Form.Group controlId="date">
                 <Form.Label>Дата</Form.Label>
                 <Form.Control
                     type="date"
