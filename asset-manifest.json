@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/cat-exprenses-tracker/static/css/main.625be09f.css",
-    "main.js": "/cat-exprenses-tracker/static/js/main.c854bef4.js",
+    "main.css": "/cat-exprenses-tracker/static/css/main.192227c6.css",
+    "main.js": "/cat-exprenses-tracker/static/js/main.e5235149.js",
     "static/media/bg1.jpg": "/cat-exprenses-tracker/static/media/bg1.546c8159e2668c2953e0.jpg",
     "static/media/Сухой корм.png": "/cat-exprenses-tracker/static/media/Сухой корм.e222a8907d6c2f5c204c.png",
     "static/media/Наполнитель.png": "/cat-exprenses-tracker/static/media/Наполнитель.3d9bb385629714b86761.png",
@@ -10,11 +10,11 @@
     "static/media/Лекарства.png": "/cat-exprenses-tracker/static/media/Лекарства.e9cf8f16c5867a7d62c3.png",
     "static/media/Лакомства.png": "/cat-exprenses-tracker/static/media/Лакомства.5451e36cecf86fff0247.png",
     "index.html": "/cat-exprenses-tracker/index.html",
-    "main.625be09f.css.map": "/cat-exprenses-tracker/static/css/main.625be09f.css.map",
-    "main.c854bef4.js.map": "/cat-exprenses-tracker/static/js/main.c854bef4.js.map"
+    "main.192227c6.css.map": "/cat-exprenses-tracker/static/css/main.192227c6.css.map",
+    "main.e5235149.js.map": "/cat-exprenses-tracker/static/js/main.e5235149.js.map"
   },
   "entrypoints": [
-    "static/css/main.625be09f.css",
-    "static/js/main.c854bef4.js"
+    "static/css/main.192227c6.css",
+    "static/js/main.e5235149.js"
   ]
 }
