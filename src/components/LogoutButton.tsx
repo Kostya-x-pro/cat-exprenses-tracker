@@ -11,7 +11,6 @@ const LogoutButton: React.FC = () => {
       console.error("Ошибка при выходе:", error);
     }
   };
-
   return (
     <button className="btn btn-danger" onClick={handleLogout}>
       Выйти

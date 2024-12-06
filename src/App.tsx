@@ -19,8 +19,10 @@ const App: React.FC = () => {
           element={
             <ProtectedRoute>
               <Container className="mt-5">
-                <h1 className="text-center">Затраты на питомцев</h1>
-                <LogoutButton />
+                <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <h1 className="text-center">Затраты на питомцев</h1>
+                  <LogoutButton />
+                </div>
                 <Row className="justify-content-center mt-4">
                   <Col xs={12} md={6}>
                     <ExpenseForm />
